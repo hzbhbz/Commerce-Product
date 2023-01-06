@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digital.sql.mapper.ProductMapper">
+	
+	<select id="getProduct" resultType="com.digital.sql.vo.ProductVO">
+		select p.productid, p.categoryid, p.productname, p.price
+		from product p, category c
+		where productname = #{productName} and p.categoryid=c.categoryid
+	</select>
+	
+	<insert id="setProduct" parameterType="com.digital.sql.vo.ProductVO">
+		insert into product(productid, categoryid, productname, price) values(#{productId}, #{categoryId}, #{productName}, #{price})
+	</insert>
+	
+</mapper> 
